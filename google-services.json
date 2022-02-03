@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "45794581586",
+    "project_id": "roclinics",
+    "storage_bucket": "roclinics.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:45794581586:android:e0938ff7997e8b7cb7138b",
+        "android_client_info": {
+          "package_name": "com.example.roclinics"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "45794581586-opjilr6kp7rb7opmdbu1375vot6vks0c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJGKdg0mTOl1hw3smRdRtMHx5NKKxyD1s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "45794581586-opjilr6kp7rb7opmdbu1375vot6vks0c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
