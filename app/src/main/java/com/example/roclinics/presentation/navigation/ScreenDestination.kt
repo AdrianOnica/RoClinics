@@ -8,4 +8,5 @@ sealed class ScreenDestination(val route: String){
     object UserScreen : ScreenDestination("user_screen")
     object ProfileDetailsScreen : ScreenDestination("profile_details_screen")
     object RezervationScreen : ScreenDestination("rezervation_screen")
+    object RezervationDetailScreen : ScreenDestination("rezervation_detail_screen")
 }

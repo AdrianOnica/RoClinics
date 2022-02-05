@@ -8,6 +8,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -16,7 +18,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -79,13 +84,13 @@ fun CustomTextField(
     modifier: Modifier = Modifier
         .padding(end = 23.dp, bottom = 15.dp, start = 20.dp)
         .fillMaxWidth()
-        .clickable { onClick.invoke() },
+        .clickable { onClick?.invoke() },
     colors: TextFieldColors = TextFieldDefaults.textFieldColors(
         backgroundColor = Color.Transparent,
         disabledTextColor = Color.White
     ),
     enabled: Boolean = false,
-    onClick: () -> Unit
+    onClick: (() -> Unit)? = null
 ) {
     TextField(
         value = value,
@@ -97,17 +102,53 @@ fun CustomTextField(
     )
 }
 
+@Composable
+fun CustomRezervationTextField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    label: @Composable() () -> Unit,
+    modifier: Modifier = Modifier
+        .padding(end = 23.dp, bottom = 15.dp, start = 20.dp)
+        .size(height = 60.dp, width = 120.dp).clickable { onClick?.invoke() },
+    colors: TextFieldColors = TextFieldDefaults.textFieldColors(
+        backgroundColor = Color.Transparent,
+        disabledTextColor = Color.White
+    ),
+    enabled: Boolean,
+    onClick: (() ->Unit)? = null
+){
+    TextField(
+        value = value,
+        onValueChange = onValueChange,
+        label = label,
+        modifier = modifier,
+        colors = colors,
+        enabled = enabled
+    )
+}
+
+@Composable
+fun BackIcon(navController: NavController) {
+    Icon(
+        imageVector = Icons.Default.ArrowBack,
+        contentDescription = "Navigate back icon",
+        tint = Color.White,
+        modifier =  Modifier
+            .padding(start = 3.dp)
+            .clickable {
+                navigateTo(navController,ScreenDestination.UserScreen)
+        })
+}
 
 
 @Composable
-fun CheckSignedIn(navController: NavController,viewModel: AppViewModel){
+fun CheckSignedIn(navController: NavController, viewModel: AppViewModel) {
     val signedIn = viewModel.signedIn.value
     val completeInformation = viewModel.completeInformation.value
-    if(signedIn == true){
-        navigateTo(navController,ScreenDestination.UserScreen)
-        }
+    if (signedIn == true) {
+        navigateTo(navController, ScreenDestination.UserScreen)
     }
-
+}
 
 
 //TODO

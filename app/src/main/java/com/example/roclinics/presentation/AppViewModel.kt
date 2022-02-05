@@ -43,8 +43,8 @@ class AppViewModel @Inject constructor(
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
+                    createOrUpdateProfile(email = email)
                     Log.d("Profile", "onSignUp: you signedup with succes ")
-                    signedIn.value = true
                 }
             }
     }
@@ -88,6 +88,9 @@ class AppViewModel @Inject constructor(
                 }
             }
         }
+    }
+    fun get(){
+        db.collection(Constants.USERS)
     }
 
     fun getData(uid:String){

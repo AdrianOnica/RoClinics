@@ -1,7 +1,9 @@
 package com.example.roclinics.presentation.navigation
 
+import android.content.Context
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -12,6 +14,7 @@ import com.example.roclinics.presentation.auth.AnimatedSplashScreen
 import com.example.roclinics.presentation.auth.ClientSignUpScreen
 import com.example.roclinics.presentation.auth.IntroductionScreen
 import com.example.roclinics.presentation.main.ProfileDetailsScreen
+import com.example.roclinics.presentation.main.RezervationDetailScreen
 import com.example.roclinics.presentation.main.RezervationScreen
 import com.example.roclinics.presentation.main.UserScreen
 
@@ -21,6 +24,7 @@ import com.example.roclinics.presentation.main.UserScreen
 fun ScreenNavigation() {
     val navController = rememberNavController()
     val viewModel: AppViewModel = hiltViewModel<AppViewModel>()
+    val context = LocalContext.current
     NavHost(
         navController = navController,
         startDestination = ScreenDestination.SplashScreen.route
@@ -45,6 +49,9 @@ fun ScreenNavigation() {
         }
         composable(ScreenDestination.RezervationScreen.route) {
             RezervationScreen(navController, viewModel)
+        }
+     composable(ScreenDestination.RezervationDetailScreen.route) {
+            RezervationDetailScreen(navController, viewModel)
         }
 
     }
